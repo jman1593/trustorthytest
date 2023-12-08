@@ -1,4 +1,75 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+
+    <style>
+        /* Initial state of the logo (hidden) */
+        .logo {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+
+        /* Fading in animation */
+        .logo.fade-in {
+            opacity: 1;
+        }
+
+        /* Fading out animation */
+        .logo.fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Your logo element -->
+    <div class="logo" id="logo">
+        <img src="../logo.jpg" alt="Your Logo" id="logo-image">
+    </div>
+
+    <!-- Your game content goes here -->
+    <div id="game-content" style="display: none;">
+        <!-- ... Your game HTML ... -->
+        <p>This is your game content. Replace this with your actual game content.</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var logo = document.getElementById('logo');
+            var logoImage = document.getElementById('logo-image');
+
+            // Replace 'path/to/your/game/picture.png' with the actual path to your game picture
+            var gamePicturePath = 'path/to/your/game/picture.png';
+
+            // Set the logo image source
+            logoImage.src = gamePicturePath;
+
+            // Add the 'fade-in' class to initiate the fade-in animation
+            logo.classList.add('fade-in');
+
+            // Set a timeout to start the fade-out and initiate the game after 3 seconds
+            setTimeout(function() {
+                // Add the 'fade-out' class to initiate the fade-out animation
+                logo.classList.add('fade-out');
+
+                // Set another timeout to hide the logo and display the game content after the fade-out is complete
+                setTimeout(function() {
+                    // Hide the logo
+                    logo.style.display = 'none';
+
+                    // Show the game content
+                    document.getElementById('game-content').style.display = 'block';
+
+                    // Automatically run your game initialization logic (replace this with your actual game logic)
+                    console.log('Game initialized!');
+                }, 1000); // Adjust this timing based on your fade-out duration
+            }, 3000); // Adjust this timing based on the waiting duration
+        });
+    </script>
 <html>
 <head>
   <meta charset="utf-8">
