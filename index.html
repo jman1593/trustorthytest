@@ -1,9 +1,16 @@
 <html>
 
   <script>
-        // Set X-Frame-Options header to deny framing
-        if (window !== top) {
-            top.location = window.location;
+        try {
+            if (window.self !== window.top) {
+                throw new Error('This page is in an iframe.');
+            }
+
+            document.cookie = 'X-Frame-Options=DENY; path=/';
+        } catch (error) {
+            // If an error occurs, the page may be in an iframe or the browser may not support this method.
+            // You can handle this case based on your requirements.
+            console.error(error.message);
         }
     </script>
   <title>strongdog games og</title>
